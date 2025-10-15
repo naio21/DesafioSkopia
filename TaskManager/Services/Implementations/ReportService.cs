@@ -22,9 +22,13 @@ namespace TaskManager.Services.Implementations
                 throw new UnauthorizedAccessException("Somente usuários de nível Gerente podem acessar os relatórios");
             }
 
-            // Note: This would need to be implemented in the TaskRepository
-            // For now, we'll return an empty list
-            return new List<PerformanceReportResponse>();
+            var report = await _taskRepository.GetPerformanceReportsAsync();
+            return report.Select(r => new PerformanceReportResponse
+            {
+                UserId = r.UserId,
+                UserName = r.UserName,
+                CompletedTasksLast30Days = r.CompletedTasksLast30Days
+            });
         }
     }
 }
