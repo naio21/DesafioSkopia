@@ -46,6 +46,7 @@ public class ProjectServiceTests
     {
         _userRepo.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(new User { UserId = 1 });
         _projectRepo.Setup(r => r.CreateAsync(It.IsAny<Project>())).ReturnsAsync(99);
+        _projectRepo.Setup(r => r.GetByIdAsync(99)).ReturnsAsync(new Project { ProjectId = 99, Name = "Test", CreatedAt = System.DateTime.UtcNow });
         var req = new CreateProjectRequest { Name = "Test" };
         var ret = await _service.CreateProjectAsync(req, 1);
         Assert.Equal(99, ret.ProjectId);

@@ -47,7 +47,7 @@ public class TaskServiceTests
     [Fact]
     public async Task UpdateTask_ShouldRecordHistory_WhenFieldsChange()
     {
-        var task = new TaskItem { TaskId = 1, Title = "Old", Description = "Desc", Status = TaskManager.Models.TaskStatus.Pendente };
+        var task = new TaskItem { TaskId = 1, Title = "Old", Description = "Desc", Status = TaskManager.Models.TaskStatus.Pending };
         _taskRepo.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(task);
         _taskRepo.Setup(r => r.UpdateAsync(It.IsAny<TaskItem>())).ReturnsAsync(true);
         _historyRepo.Setup(r => r.CreateAsync(It.IsAny<TaskHistory>())).Returns(Task.CompletedTask);
