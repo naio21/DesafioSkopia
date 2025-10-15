@@ -54,6 +54,9 @@ namespace TaskManager.Middleware
                 TaskLimitExceededException or ProjectDeletionException
                     => (HttpStatusCode.BadRequest, exception.Message),
 
+                UnauthorizedAccessException
+                    => (HttpStatusCode.Unauthorized, exception.Message),
+
                 _ => (HttpStatusCode.InternalServerError, "Erro inesperado. Tente novamente mais tarde.")
             };
         }
