@@ -19,7 +19,7 @@ namespace TaskManager.Services.Implementations
             var isManager = await _userRepository.IsManagerAsync(requestingUserId);
             if (!isManager)
             {
-                throw new UnauthorizedAccessException("Only managers can access performance reports");
+                throw new UnauthorizedAccessException("Somente usuários de nível Gerente podem acessar os relatórios");
             }
 
             // Note: This would need to be implemented in the TaskRepository
