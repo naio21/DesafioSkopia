@@ -61,7 +61,7 @@ namespace TaskManager.Services.Implementations
                 Title = request.Title,
                 Description = request.Description,
                 DueDate = request.DueDate,
-                Status = Models.TaskStatus.Pendente,
+                Status = Models.TaskStatus.Pending,
                 Priority = request.Priority,
                 CreatedBy = userId,
                 CreatedAt = DateTime.UtcNow
