@@ -11,24 +11,6 @@ namespace TaskManager.Tests;
 
 public class TaskHistoryRepositoryTests
 {
-    private string GetConnectionString()
-    {
-        var conn = new SqliteConnection("DataSource=:memory:");
-        conn.Open();
-        var cmd = conn.CreateCommand();
-        cmd.CommandText = @"CREATE TABLE TaskHistory (
-            HistoryId INTEGER PRIMARY KEY AUTOINCREMENT,
-            TaskId INTEGER NOT NULL,
-            FieldChanged TEXT NOT NULL,
-            ChangedAt TEXT NOT NULL,
-            ChangedBy INTEGER NOT NULL,
-            Comment TEXT
-        );";
-        cmd.ExecuteNonQuery();
-        conn.Close();
-        return "DataSource=:memory:";
-    }
-
     [Fact]
     public async Task CreateAndGetHistory_ShouldWork()
     {
