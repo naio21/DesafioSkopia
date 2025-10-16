@@ -57,3 +57,7 @@ Abra um terminal na raíz da Solution e execute: **docker build -t taskmanager-a
 - Implementar autenticação (JWT token) e autorização (para definir se o usuário tem o role de Gerente)
 - Adotar um SGBD mais robusto, como o SQL Server "full", Oracle ou MySQL
 - Implementar o front-end da aplicação
+- Implementar cache distribuído utilizando Redis
+- Modificar o log da aplicação para publicar em uma plataforma com mais recursos, como Elastic Serarch e Kibana
+- Implementar ferramentas de observabilidade (New Relic, Dynatrace etc)
+- Implementar pipelines de build/deploy integrado com Github Actions, Code Coverage (ex.: SonarQube) e - opcionalmente - publicação em nuvem (Azure, AWS, GCP)
