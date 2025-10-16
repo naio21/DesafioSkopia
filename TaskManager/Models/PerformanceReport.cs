@@ -1,6 +1,6 @@
-namespace TaskManager.DTOs
+namespace TaskManager.Models
 {
-    public class PerformanceReportResponse
+    public class PerformanceReport
     {
         public int UserId { get; set; }
         public string UserName { get; set; } = string.Empty;

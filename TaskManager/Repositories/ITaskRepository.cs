@@ -10,5 +10,6 @@ namespace TaskManager.Repositories
         Task<bool> UpdateAsync(TaskItem task);
         Task<bool> DeleteAsync(int taskId);
         Task<int> GetTaskCountForProjectAsync(int projectId);
+        Task<IEnumerable<PerformanceReport>> GetPerformanceReportsAsync();
     }
 }

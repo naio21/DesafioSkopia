@@ -77,5 +77,21 @@ namespace TaskManager.Repositories.Implementations
 
             return await connection.ExecuteScalarAsync<int>(sql, new { ProjectId = projectId });
         }
+
+        public async Task<IEnumerable<Models.PerformanceReport>> GetPerformanceReportsAsync()
+        {
+            using var connection = new SqlConnection(_connectionString);
+            const string sql = @"
+            SELECT
+	            SUM(T.TaskId) AS CompletedTasksLast30Days,
+	            U.UserId,
+	            U.Name AS UserName
+            FROM Tasks T
+            INNER JOIN Users U ON T.CreatedBy = U.UserId
+            WHERE T.Status = 2 AND DATEDIFF(day, T.CreatedAt, GETDATE()) <= 30
+            GROUP BY U.UserId, U.Name";
+ 
+            return await connection.QueryAsync<Models.PerformanceReport>(sql);
+        }
     }
 }
